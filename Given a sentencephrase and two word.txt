@@ -1,0 +1,48 @@
+Given a sentence/phrase and two words,
+    return the minimum distance between the words.
+Example:
+    String str = “the quick the brown quick brown the frog”
+    String word1 = “quick”
+    String word2 = "frog"
+    //Return 2
+
+
+public class Solution {
+    public static int shortestDistance(String str, String word1, String word2) {
+        // Split the string into words
+        int shortdist=Integer.MAX_VALUE;
+        int currentdist=0;
+       String []arr=str.split(" ");
+       int lastIndex=0;
+       int lastIndex2=0;
+       
+       for(int i=0;i<arr.length;i++)
+       {
+        if(arr[i].equals(word1))
+        {
+            lastIndex=i;
+        }
+         if(arr[i].equals(word2))
+        {
+            lastIndex2=i;
+        }
+       }
+        currentdist=Math.abs(lastIndex-lastIndex2)-1;
+       if(currentdist <shortdist)
+       {
+        shortdist=currentdist;
+       }
+       return  shortdist;
+        
+
+    }
+
+    public static void main(String[] args) {
+        String str = "the quick the brown quick brown the frog";
+        String word1 = "quick";
+        String word2 = "frog";
+
+        // Call the function and print the result
+        System.out.println(shortestDistance(str, word1, word2));  // Output: 2
+    }
+}
