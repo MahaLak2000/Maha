@@ -1,0 +1,34 @@
+public class Solution {
+    public static boolean isValid(String s) {
+        // Count variables for each type of bracket
+
+        int round = 0, square = 0, curly = 0;
+        if(s.length()%2==0)
+        {
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '(': round++; break;
+                case ')':  round--; break;
+                case '[': square++; break;
+                case ']':  square--; break;
+                case '{': curly++; break;
+                case '}': curly--; break;
+                default: return false; // invalid character (though problem guarantees only brackets)
+            }
+        }
+        }else
+        {
+          return false;
+        }
+        
+        // Check if all counters are zero
+        return round == 0 && square == 0 && curly == 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isValid("()[]"));       // true
+        System.out.println(isValid("()]{}"));   // true
+        System.out.println(isValid("(][)"));       // false
+        System.out.println(isValid("([]){}"));     // true
+    }
+}
